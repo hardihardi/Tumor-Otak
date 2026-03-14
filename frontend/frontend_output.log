@@ -1,0 +1,500 @@
+
+> frontend@0.1.0 start
+> react-scripts start
+
+(node:29590) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:29590) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view frontend in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.0.2:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+ERROR in src/pages/MRIAnalysis.tsx:68:9
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: (Element | null)[]; item: true; xs: number; md: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: (Element | null)[]; item: true; xs: number; md: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    66 |
+    67 |       <Grid container spacing={4}>
+  > 68 |         <Grid item xs={12} md={6}>
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    69 |           <Paper sx={{ p: 4, borderRadius: 4, textAlign: 'center', border: '2px dashed rgba(0,0,0,0.1)', bgcolor: 'rgba(0,0,0,0.01)' }}>
+    70 |             <input
+    71 |               accept="image/*"
+
+ERROR in src/pages/MRIAnalysis.tsx:111:9
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; md: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; md: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    109 |         </Grid>
+    110 |
+  > 111 |         <Grid item xs={12} md={6}>
+        |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    112 |           <Card sx={{ borderRadius: 4, height: '100%', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+    113 |             <CardContent sx={{ p: 4 }}>
+    114 |               <Typography variant="h6" sx={{ mb: 3, fontWeight: 'bold' }}>Analysis Result</Typography>
+
+Compiling...
+Failed to compile.
+
+Attempted import error: 'Grid2' is not exported from '@mui/material' (imported as 'Grid').
+ERROR in ./src/pages/MRIAnalysis.tsx 65:35-39
+export 'Grid2' (imported as 'Grid') was not found in '@mui/material' (possible exports: Accordion, AccordionActions, AccordionDetails, AccordionSummary, Alert, AlertTitle, AppBar, Autocomplete, Avatar, AvatarGroup, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonBase, ButtonGroup, ButtonGroupButtonContext, ButtonGroupContext, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, CssVarsProvider, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, Experimental_CssVarsProvider, Fab, Fade, FilledInput, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, FormLabelRoot, GlobalStyles, Grid, GridLegacy, Grow, Icon, IconButton, ImageList, ImageListItem, ImageListItemBar, InitColorSchemeScript, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, ModalManager, NativeSelect, NoSsr, OutlinedInput, Pagination, PaginationItem, Paper, Popover, PopoverPaper, PopoverRoot, Popper, Portal, Radio, RadioGroup, Rating, ScopedCssBaseline, Select, Skeleton, Slide, Slider, SliderMark, SliderMarkLabel, SliderRail, SliderRoot, SliderThumb, SliderTrack, SliderValueLabel, Snackbar, SnackbarContent, SpeedDial, SpeedDialAction, SpeedDialIcon, Stack, Step, StepButton, StepConnector, StepContent, StepContext, StepIcon, StepLabel, Stepper, StepperContext, StyledEngineProvider, SvgIcon, SwipeableDrawer, Switch, THEME_ID, Tab, TabScrollButton, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TablePaginationActions, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, ThemeProvider, ToggleButton, ToggleButtonGroup, Toolbar, Tooltip, Typography, Unstable_TrapFocus, Zoom, accordionActionsClasses, accordionClasses, accordionDetailsClasses, accordionSummaryClasses, adaptV4Theme, alertClasses, alertTitleClasses, alpha, appBarClasses, autocompleteClasses, avatarClasses, avatarGroupClasses, backdropClasses, badgeClasses, bottomNavigationActionClasses, bottomNavigationClasses, boxClasses, breadcrumbsClasses, buttonBaseClasses, buttonClasses, buttonGroupClasses, capitalize, cardActionAreaClasses, cardActionsClasses, cardClasses, cardContentClasses, cardHeaderClasses, cardMediaClasses, checkboxClasses, chipClasses, circularProgressClasses, collapseClasses, colors, containerClasses, createChainedFunction, createColorScheme, createFilterOptions, createStyles, createSvgIcon, createTheme, createTransitions, css, darkScrollbar, darken, debounce, decomposeColor, deprecatedPropType, dialogActionsClasses, dialogClasses, dialogContentClasses, dialogContentTextClasses, dialogTitleClasses, dividerClasses, drawerClasses, duration, easing, emphasize, experimental_extendTheme, experimental_sx, extendTheme, fabClasses, filledInputClasses, formControlClasses, formControlLabelClasses, formGroupClasses, formHelperTextClasses, formLabelClasses, generateUtilityClass, generateUtilityClasses, getAccordionActionsUtilityClass, getAccordionDetailsUtilityClass, getAccordionSummaryUtilityClass, getAccordionUtilityClass, getAlertTitleUtilityClass, getAlertUtilityClass, getAppBarUtilityClass, getAutocompleteUtilityClass, getAvatarGroupUtilityClass, getAvatarUtilityClass, getBackdropUtilityClass, getBadgeUtilityClass, getBottomNavigationActionUtilityClass, getBottomNavigationUtilityClass, getBreadcrumbsUtilityClass, getButtonBaseUtilityClass, getButtonGroupUtilityClass, getButtonUtilityClass, getCardActionAreaUtilityClass, getCardActionsUtilityClass, getCardContentUtilityClass, getCardHeaderUtilityClass, getCardMediaUtilityClass, getCardUtilityClass, getCheckboxUtilityClass, getChipUtilityClass, getCircularProgressUtilityClass, getCollapseUtilityClass, getContainerUtilityClass, getContrastRatio, getDialogActionsUtilityClass, getDialogContentTextUtilityClass, getDialogContentUtilityClass, getDialogTitleUtilityClass, getDialogUtilityClass, getDividerUtilityClass, getDrawerUtilityClass, getFabUtilityClass, getFilledInputUtilityClass, getFormControlLabelUtilityClasses, getFormControlUtilityClasses, getFormGroupUtilityClass, getFormHelperTextUtilityClasses, getFormLabelUtilityClasses, getGridUtilityClass, getIconButtonUtilityClass, getIconUtilityClass, getImageListItemBarUtilityClass, getImageListItemUtilityClass, getImageListUtilityClass, getInitColorSchemeScript, getInputAdornmentUtilityClass, getInputBaseUtilityClass, getInputLabelUtilityClasses, getInputUtilityClass, getLinearProgressUtilityClass, getLinkUtilityClass, getListItemAvatarUtilityClass, getListItemButtonUtilityClass, getListItemIconUtilityClass, getListItemSecondaryActionClassesUtilityClass, getListItemTextUtilityClass, getListItemUtilityClass, getListSubheaderUtilityClass, getListUtilityClass, getLuminance, getMenuItemUtilityClass, getMenuUtilityClass, getMobileStepperUtilityClass, getModalUtilityClass, getNativeSelectUtilityClasses, getOffsetLeft, getOffsetTop, getOutlinedInputUtilityClass, getOverlayAlpha, getPaginationItemUtilityClass, getPaginationUtilityClass, getPaperUtilityClass, getPopoverUtilityClass, getPopperUtilityClass, getRadioGroupUtilityClass, getRadioUtilityClass, getRatingUtilityClass, getScopedCssBaselineUtilityClass, getSelectUtilityClasses, getSkeletonUtilityClass, getSliderUtilityClass, getSnackbarContentUtilityClass, getSnackbarUtilityClass, getSpeedDialActionUtilityClass, getSpeedDialIconUtilityClass, getSpeedDialUtilityClass, getStepButtonUtilityClass, getStepConnectorUtilityClass, getStepContentUtilityClass, getStepIconUtilityClass, getStepLabelUtilityClass, getStepUtilityClass, getStepperUtilityClass, getSvgIconUtilityClass, getSwitchUtilityClass, getTabScrollButtonUtilityClass, getTabUtilityClass, getTableBodyUtilityClass, getTableCellUtilityClass, getTableContainerUtilityClass, getTableFooterUtilityClass, getTableHeadUtilityClass, getTablePaginationUtilityClass, getTableRowUtilityClass, getTableSortLabelUtilityClass, getTableUtilityClass, getTabsUtilityClass, getTextFieldUtilityClass, getToggleButtonGroupUtilityClass, getToggleButtonUtilityClass, getToolbarUtilityClass, getTooltipUtilityClass, getTouchRippleUtilityClass, getTypographyUtilityClass, gridClasses, hexToRgb, hslToRgb, iconButtonClasses, iconClasses, imageListClasses, imageListItemBarClasses, imageListItemClasses, inputAdornmentClasses, inputBaseClasses, inputClasses, inputLabelClasses, isMuiElement, keyframes, lighten, linearProgressClasses, linkClasses, listClasses, listItemAvatarClasses, listItemButtonClasses, listItemClasses, listItemIconClasses, listItemSecondaryActionClasses, listItemTextClasses, listSubheaderClasses, major, makeStyles, menuClasses, menuItemClasses, mergeSlotProps, minor, mobileStepperClasses, modalClasses, nativeSelectClasses, outlinedInputClasses, ownerDocument, ownerWindow, paginationClasses, paginationItemClasses, paperClasses, patch, popoverClasses, prerelease, private_createMixins, private_createTypography, private_excludeVariablesFromRoot, radioClasses, radioGroupClasses, ratingClasses, recomposeColor, requirePropFactory, responsiveFontSizes, rgbToHex, scopedCssBaselineClasses, selectClasses, setRef, shouldSkipGeneratingVar, skeletonClasses, sliderClasses, snackbarClasses, snackbarContentClasses, speedDialActionClasses, speedDialClasses, speedDialIconClasses, stackClasses, stepButtonClasses, stepClasses, stepConnectorClasses, stepContentClasses, stepIconClasses, stepLabelClasses, stepperClasses, styled, svgIconClasses, switchClasses, tabClasses, tabScrollButtonClasses, tableBodyClasses, tableCellClasses, tableClasses, tableContainerClasses, tableFooterClasses, tableHeadClasses, tablePaginationActionsClasses, tablePaginationClasses, tableRowClasses, tableSortLabelClasses, tabsClasses, textFieldClasses, toggleButtonClasses, toggleButtonGroupClasses, toolbarClasses, tooltipClasses, touchRippleClasses, typographyClasses, unstable_ClassNameGenerator, unstable_composeClasses, unstable_createBreakpoints, unstable_createMuiStrictModeTheme, unstable_getUnit, unstable_memoTheme, unstable_toUnitless, unstable_useEnhancedEffect, unstable_useId, unsupportedProp, useAutocomplete, useColorScheme, useControlled, useEventCallback, useForkRef, useFormControl, useMediaQuery, usePagination, useRadioGroup, useScrollTrigger, useStepContext, useStepperContext, useTheme, useThemeProps, version, withStyles, withTheme)
+
+ERROR in ./src/pages/MRIAnalysis.tsx 68:38-42
+export 'Grid2' (imported as 'Grid') was not found in '@mui/material' (possible exports: Accordion, AccordionActions, AccordionDetails, AccordionSummary, Alert, AlertTitle, AppBar, Autocomplete, Avatar, AvatarGroup, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonBase, ButtonGroup, ButtonGroupButtonContext, ButtonGroupContext, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, CssVarsProvider, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, Experimental_CssVarsProvider, Fab, Fade, FilledInput, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, FormLabelRoot, GlobalStyles, Grid, GridLegacy, Grow, Icon, IconButton, ImageList, ImageListItem, ImageListItemBar, InitColorSchemeScript, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, ModalManager, NativeSelect, NoSsr, OutlinedInput, Pagination, PaginationItem, Paper, Popover, PopoverPaper, PopoverRoot, Popper, Portal, Radio, RadioGroup, Rating, ScopedCssBaseline, Select, Skeleton, Slide, Slider, SliderMark, SliderMarkLabel, SliderRail, SliderRoot, SliderThumb, SliderTrack, SliderValueLabel, Snackbar, SnackbarContent, SpeedDial, SpeedDialAction, SpeedDialIcon, Stack, Step, StepButton, StepConnector, StepContent, StepContext, StepIcon, StepLabel, Stepper, StepperContext, StyledEngineProvider, SvgIcon, SwipeableDrawer, Switch, THEME_ID, Tab, TabScrollButton, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TablePaginationActions, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, ThemeProvider, ToggleButton, ToggleButtonGroup, Toolbar, Tooltip, Typography, Unstable_TrapFocus, Zoom, accordionActionsClasses, accordionClasses, accordionDetailsClasses, accordionSummaryClasses, adaptV4Theme, alertClasses, alertTitleClasses, alpha, appBarClasses, autocompleteClasses, avatarClasses, avatarGroupClasses, backdropClasses, badgeClasses, bottomNavigationActionClasses, bottomNavigationClasses, boxClasses, breadcrumbsClasses, buttonBaseClasses, buttonClasses, buttonGroupClasses, capitalize, cardActionAreaClasses, cardActionsClasses, cardClasses, cardContentClasses, cardHeaderClasses, cardMediaClasses, checkboxClasses, chipClasses, circularProgressClasses, collapseClasses, colors, containerClasses, createChainedFunction, createColorScheme, createFilterOptions, createStyles, createSvgIcon, createTheme, createTransitions, css, darkScrollbar, darken, debounce, decomposeColor, deprecatedPropType, dialogActionsClasses, dialogClasses, dialogContentClasses, dialogContentTextClasses, dialogTitleClasses, dividerClasses, drawerClasses, duration, easing, emphasize, experimental_extendTheme, experimental_sx, extendTheme, fabClasses, filledInputClasses, formControlClasses, formControlLabelClasses, formGroupClasses, formHelperTextClasses, formLabelClasses, generateUtilityClass, generateUtilityClasses, getAccordionActionsUtilityClass, getAccordionDetailsUtilityClass, getAccordionSummaryUtilityClass, getAccordionUtilityClass, getAlertTitleUtilityClass, getAlertUtilityClass, getAppBarUtilityClass, getAutocompleteUtilityClass, getAvatarGroupUtilityClass, getAvatarUtilityClass, getBackdropUtilityClass, getBadgeUtilityClass, getBottomNavigationActionUtilityClass, getBottomNavigationUtilityClass, getBreadcrumbsUtilityClass, getButtonBaseUtilityClass, getButtonGroupUtilityClass, getButtonUtilityClass, getCardActionAreaUtilityClass, getCardActionsUtilityClass, getCardContentUtilityClass, getCardHeaderUtilityClass, getCardMediaUtilityClass, getCardUtilityClass, getCheckboxUtilityClass, getChipUtilityClass, getCircularProgressUtilityClass, getCollapseUtilityClass, getContainerUtilityClass, getContrastRatio, getDialogActionsUtilityClass, getDialogContentTextUtilityClass, getDialogContentUtilityClass, getDialogTitleUtilityClass, getDialogUtilityClass, getDividerUtilityClass, getDrawerUtilityClass, getFabUtilityClass, getFilledInputUtilityClass, getFormControlLabelUtilityClasses, getFormControlUtilityClasses, getFormGroupUtilityClass, getFormHelperTextUtilityClasses, getFormLabelUtilityClasses, getGridUtilityClass, getIconButtonUtilityClass, getIconUtilityClass, getImageListItemBarUtilityClass, getImageListItemUtilityClass, getImageListUtilityClass, getInitColorSchemeScript, getInputAdornmentUtilityClass, getInputBaseUtilityClass, getInputLabelUtilityClasses, getInputUtilityClass, getLinearProgressUtilityClass, getLinkUtilityClass, getListItemAvatarUtilityClass, getListItemButtonUtilityClass, getListItemIconUtilityClass, getListItemSecondaryActionClassesUtilityClass, getListItemTextUtilityClass, getListItemUtilityClass, getListSubheaderUtilityClass, getListUtilityClass, getLuminance, getMenuItemUtilityClass, getMenuUtilityClass, getMobileStepperUtilityClass, getModalUtilityClass, getNativeSelectUtilityClasses, getOffsetLeft, getOffsetTop, getOutlinedInputUtilityClass, getOverlayAlpha, getPaginationItemUtilityClass, getPaginationUtilityClass, getPaperUtilityClass, getPopoverUtilityClass, getPopperUtilityClass, getRadioGroupUtilityClass, getRadioUtilityClass, getRatingUtilityClass, getScopedCssBaselineUtilityClass, getSelectUtilityClasses, getSkeletonUtilityClass, getSliderUtilityClass, getSnackbarContentUtilityClass, getSnackbarUtilityClass, getSpeedDialActionUtilityClass, getSpeedDialIconUtilityClass, getSpeedDialUtilityClass, getStepButtonUtilityClass, getStepConnectorUtilityClass, getStepContentUtilityClass, getStepIconUtilityClass, getStepLabelUtilityClass, getStepUtilityClass, getStepperUtilityClass, getSvgIconUtilityClass, getSwitchUtilityClass, getTabScrollButtonUtilityClass, getTabUtilityClass, getTableBodyUtilityClass, getTableCellUtilityClass, getTableContainerUtilityClass, getTableFooterUtilityClass, getTableHeadUtilityClass, getTablePaginationUtilityClass, getTableRowUtilityClass, getTableSortLabelUtilityClass, getTableUtilityClass, getTabsUtilityClass, getTextFieldUtilityClass, getToggleButtonGroupUtilityClass, getToggleButtonUtilityClass, getToolbarUtilityClass, getTooltipUtilityClass, getTouchRippleUtilityClass, getTypographyUtilityClass, gridClasses, hexToRgb, hslToRgb, iconButtonClasses, iconClasses, imageListClasses, imageListItemBarClasses, imageListItemClasses, inputAdornmentClasses, inputBaseClasses, inputClasses, inputLabelClasses, isMuiElement, keyframes, lighten, linearProgressClasses, linkClasses, listClasses, listItemAvatarClasses, listItemButtonClasses, listItemClasses, listItemIconClasses, listItemSecondaryActionClasses, listItemTextClasses, listSubheaderClasses, major, makeStyles, menuClasses, menuItemClasses, mergeSlotProps, minor, mobileStepperClasses, modalClasses, nativeSelectClasses, outlinedInputClasses, ownerDocument, ownerWindow, paginationClasses, paginationItemClasses, paperClasses, patch, popoverClasses, prerelease, private_createMixins, private_createTypography, private_excludeVariablesFromRoot, radioClasses, radioGroupClasses, ratingClasses, recomposeColor, requirePropFactory, responsiveFontSizes, rgbToHex, scopedCssBaselineClasses, selectClasses, setRef, shouldSkipGeneratingVar, skeletonClasses, sliderClasses, snackbarClasses, snackbarContentClasses, speedDialActionClasses, speedDialClasses, speedDialIconClasses, stackClasses, stepButtonClasses, stepClasses, stepConnectorClasses, stepContentClasses, stepIconClasses, stepLabelClasses, stepperClasses, styled, svgIconClasses, switchClasses, tabClasses, tabScrollButtonClasses, tableBodyClasses, tableCellClasses, tableClasses, tableContainerClasses, tableFooterClasses, tableHeadClasses, tablePaginationActionsClasses, tablePaginationClasses, tableRowClasses, tableSortLabelClasses, tabsClasses, textFieldClasses, toggleButtonClasses, toggleButtonGroupClasses, toolbarClasses, tooltipClasses, touchRippleClasses, typographyClasses, unstable_ClassNameGenerator, unstable_composeClasses, unstable_createBreakpoints, unstable_createMuiStrictModeTheme, unstable_getUnit, unstable_memoTheme, unstable_toUnitless, unstable_useEnhancedEffect, unstable_useId, unsupportedProp, useAutocomplete, useColorScheme, useControlled, useEventCallback, useForkRef, useFormControl, useMediaQuery, usePagination, useRadioGroup, useScrollTrigger, useStepContext, useStepperContext, useTheme, useThemeProps, version, withStyles, withTheme)
+
+ERROR in ./src/pages/MRIAnalysis.tsx 218:37-41
+export 'Grid2' (imported as 'Grid') was not found in '@mui/material' (possible exports: Accordion, AccordionActions, AccordionDetails, AccordionSummary, Alert, AlertTitle, AppBar, Autocomplete, Avatar, AvatarGroup, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonBase, ButtonGroup, ButtonGroupButtonContext, ButtonGroupContext, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, CssVarsProvider, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, Experimental_CssVarsProvider, Fab, Fade, FilledInput, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, FormLabelRoot, GlobalStyles, Grid, GridLegacy, Grow, Icon, IconButton, ImageList, ImageListItem, ImageListItemBar, InitColorSchemeScript, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemButton, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, ModalManager, NativeSelect, NoSsr, OutlinedInput, Pagination, PaginationItem, Paper, Popover, PopoverPaper, PopoverRoot, Popper, Portal, Radio, RadioGroup, Rating, ScopedCssBaseline, Select, Skeleton, Slide, Slider, SliderMark, SliderMarkLabel, SliderRail, SliderRoot, SliderThumb, SliderTrack, SliderValueLabel, Snackbar, SnackbarContent, SpeedDial, SpeedDialAction, SpeedDialIcon, Stack, Step, StepButton, StepConnector, StepContent, StepContext, StepIcon, StepLabel, Stepper, StepperContext, StyledEngineProvider, SvgIcon, SwipeableDrawer, Switch, THEME_ID, Tab, TabScrollButton, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TablePaginationActions, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, ThemeProvider, ToggleButton, ToggleButtonGroup, Toolbar, Tooltip, Typography, Unstable_TrapFocus, Zoom, accordionActionsClasses, accordionClasses, accordionDetailsClasses, accordionSummaryClasses, adaptV4Theme, alertClasses, alertTitleClasses, alpha, appBarClasses, autocompleteClasses, avatarClasses, avatarGroupClasses, backdropClasses, badgeClasses, bottomNavigationActionClasses, bottomNavigationClasses, boxClasses, breadcrumbsClasses, buttonBaseClasses, buttonClasses, buttonGroupClasses, capitalize, cardActionAreaClasses, cardActionsClasses, cardClasses, cardContentClasses, cardHeaderClasses, cardMediaClasses, checkboxClasses, chipClasses, circularProgressClasses, collapseClasses, colors, containerClasses, createChainedFunction, createColorScheme, createFilterOptions, createStyles, createSvgIcon, createTheme, createTransitions, css, darkScrollbar, darken, debounce, decomposeColor, deprecatedPropType, dialogActionsClasses, dialogClasses, dialogContentClasses, dialogContentTextClasses, dialogTitleClasses, dividerClasses, drawerClasses, duration, easing, emphasize, experimental_extendTheme, experimental_sx, extendTheme, fabClasses, filledInputClasses, formControlClasses, formControlLabelClasses, formGroupClasses, formHelperTextClasses, formLabelClasses, generateUtilityClass, generateUtilityClasses, getAccordionActionsUtilityClass, getAccordionDetailsUtilityClass, getAccordionSummaryUtilityClass, getAccordionUtilityClass, getAlertTitleUtilityClass, getAlertUtilityClass, getAppBarUtilityClass, getAutocompleteUtilityClass, getAvatarGroupUtilityClass, getAvatarUtilityClass, getBackdropUtilityClass, getBadgeUtilityClass, getBottomNavigationActionUtilityClass, getBottomNavigationUtilityClass, getBreadcrumbsUtilityClass, getButtonBaseUtilityClass, getButtonGroupUtilityClass, getButtonUtilityClass, getCardActionAreaUtilityClass, getCardActionsUtilityClass, getCardContentUtilityClass, getCardHeaderUtilityClass, getCardMediaUtilityClass, getCardUtilityClass, getCheckboxUtilityClass, getChipUtilityClass, getCircularProgressUtilityClass, getCollapseUtilityClass, getContainerUtilityClass, getContrastRatio, getDialogActionsUtilityClass, getDialogContentTextUtilityClass, getDialogContentUtilityClass, getDialogTitleUtilityClass, getDialogUtilityClass, getDividerUtilityClass, getDrawerUtilityClass, getFabUtilityClass, getFilledInputUtilityClass, getFormControlLabelUtilityClasses, getFormControlUtilityClasses, getFormGroupUtilityClass, getFormHelperTextUtilityClasses, getFormLabelUtilityClasses, getGridUtilityClass, getIconButtonUtilityClass, getIconUtilityClass, getImageListItemBarUtilityClass, getImageListItemUtilityClass, getImageListUtilityClass, getInitColorSchemeScript, getInputAdornmentUtilityClass, getInputBaseUtilityClass, getInputLabelUtilityClasses, getInputUtilityClass, getLinearProgressUtilityClass, getLinkUtilityClass, getListItemAvatarUtilityClass, getListItemButtonUtilityClass, getListItemIconUtilityClass, getListItemSecondaryActionClassesUtilityClass, getListItemTextUtilityClass, getListItemUtilityClass, getListSubheaderUtilityClass, getListUtilityClass, getLuminance, getMenuItemUtilityClass, getMenuUtilityClass, getMobileStepperUtilityClass, getModalUtilityClass, getNativeSelectUtilityClasses, getOffsetLeft, getOffsetTop, getOutlinedInputUtilityClass, getOverlayAlpha, getPaginationItemUtilityClass, getPaginationUtilityClass, getPaperUtilityClass, getPopoverUtilityClass, getPopperUtilityClass, getRadioGroupUtilityClass, getRadioUtilityClass, getRatingUtilityClass, getScopedCssBaselineUtilityClass, getSelectUtilityClasses, getSkeletonUtilityClass, getSliderUtilityClass, getSnackbarContentUtilityClass, getSnackbarUtilityClass, getSpeedDialActionUtilityClass, getSpeedDialIconUtilityClass, getSpeedDialUtilityClass, getStepButtonUtilityClass, getStepConnectorUtilityClass, getStepContentUtilityClass, getStepIconUtilityClass, getStepLabelUtilityClass, getStepUtilityClass, getStepperUtilityClass, getSvgIconUtilityClass, getSwitchUtilityClass, getTabScrollButtonUtilityClass, getTabUtilityClass, getTableBodyUtilityClass, getTableCellUtilityClass, getTableContainerUtilityClass, getTableFooterUtilityClass, getTableHeadUtilityClass, getTablePaginationUtilityClass, getTableRowUtilityClass, getTableSortLabelUtilityClass, getTableUtilityClass, getTabsUtilityClass, getTextFieldUtilityClass, getToggleButtonGroupUtilityClass, getToggleButtonUtilityClass, getToolbarUtilityClass, getTooltipUtilityClass, getTouchRippleUtilityClass, getTypographyUtilityClass, gridClasses, hexToRgb, hslToRgb, iconButtonClasses, iconClasses, imageListClasses, imageListItemBarClasses, imageListItemClasses, inputAdornmentClasses, inputBaseClasses, inputClasses, inputLabelClasses, isMuiElement, keyframes, lighten, linearProgressClasses, linkClasses, listClasses, listItemAvatarClasses, listItemButtonClasses, listItemClasses, listItemIconClasses, listItemSecondaryActionClasses, listItemTextClasses, listSubheaderClasses, major, makeStyles, menuClasses, menuItemClasses, mergeSlotProps, minor, mobileStepperClasses, modalClasses, nativeSelectClasses, outlinedInputClasses, ownerDocument, ownerWindow, paginationClasses, paginationItemClasses, paperClasses, patch, popoverClasses, prerelease, private_createMixins, private_createTypography, private_excludeVariablesFromRoot, radioClasses, radioGroupClasses, ratingClasses, recomposeColor, requirePropFactory, responsiveFontSizes, rgbToHex, scopedCssBaselineClasses, selectClasses, setRef, shouldSkipGeneratingVar, skeletonClasses, sliderClasses, snackbarClasses, snackbarContentClasses, speedDialActionClasses, speedDialClasses, speedDialIconClasses, stackClasses, stepButtonClasses, stepClasses, stepConnectorClasses, stepContentClasses, stepIconClasses, stepLabelClasses, stepperClasses, styled, svgIconClasses, switchClasses, tabClasses, tabScrollButtonClasses, tableBodyClasses, tableCellClasses, tableClasses, tableContainerClasses, tableFooterClasses, tableHeadClasses, tablePaginationActionsClasses, tablePaginationClasses, tableRowClasses, tableSortLabelClasses, tabsClasses, textFieldClasses, toggleButtonClasses, toggleButtonGroupClasses, toolbarClasses, tooltipClasses, touchRippleClasses, typographyClasses, unstable_ClassNameGenerator, unstable_composeClasses, unstable_createBreakpoints, unstable_createMuiStrictModeTheme, unstable_getUnit, unstable_memoTheme, unstable_toUnitless, unstable_useEnhancedEffect, unstable_useId, unsupportedProp, useAutocomplete, useColorScheme, useControlled, useEventCallback, useForkRef, useFormControl, useMediaQuery, usePagination, useRadioGroup, useScrollTrigger, useStepContext, useStepperContext, useTheme, useThemeProps, version, withStyles, withTheme)
+
+webpack compiled with 3 errors
+ERROR in src/pages/MRIAnalysis.tsx:3:35
+TS2724: '"@mui/material"' has no exported member named 'Grid2'. Did you mean 'Grid'?
+    1 | import React, { useState } from 'react';
+    2 | import {
+  > 3 |   Box, Typography, Paper, Button, Grid2 as Grid, Card, CardContent,
+      |                                   ^^^^^
+    4 |   CircularProgress, Divider, Alert
+    5 | } from '@mui/material';
+    6 | import {
+
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+No issues found.
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+ERROR in src/pages/Patients.tsx:150:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    148 |         <DialogContent>
+    149 |           <Grid container spacing={2} sx={{ mt: 1 }}>
+  > 150 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    151 |               <TextField
+    152 |                 label="Nama Lengkap"
+    153 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:158:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    156 |               />
+    157 |             </Grid>
+  > 158 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    159 |               <TextField
+    160 |                 label="NIK"
+    161 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:166:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    164 |               />
+    165 |             </Grid>
+  > 166 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    167 |               <TextField
+    168 |                 select
+    169 |                 label="Jenis Kelamin"
+
+ERROR in src/pages/Patients.tsx:178:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    176 |               </TextField>
+    177 |             </Grid>
+  > 178 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    179 |               <TextField
+    180 |                 label="Tanggal Lahir"
+    181 |                 type="date"
+
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+ERROR in src/pages/Patients.tsx:150:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    148 |         <DialogContent>
+    149 |           <Grid container spacing={2} sx={{ mt: 1 }}>
+  > 150 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    151 |               <TextField
+    152 |                 label="Nama Lengkap"
+    153 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:158:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    156 |               />
+    157 |             </Grid>
+  > 158 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    159 |               <TextField
+    160 |                 label="NIK"
+    161 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:166:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    164 |               />
+    165 |             </Grid>
+  > 166 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    167 |               <TextField
+    168 |                 select
+    169 |                 label="Jenis Kelamin"
+
+ERROR in src/pages/Patients.tsx:178:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    176 |               </TextField>
+    177 |             </Grid>
+  > 178 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    179 |               <TextField
+    180 |                 label="Tanggal Lahir"
+    181 |                 type="date"
+
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/pages/Patients.tsx:150:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    148 |         <DialogContent>
+    149 |           <Grid container spacing={2} sx={{ mt: 1 }}>
+  > 150 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    151 |               <TextField
+    152 |                 label="Nama Lengkap"
+    153 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:158:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    156 |               />
+    157 |             </Grid>
+  > 158 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    159 |               <TextField
+    160 |                 label="NIK"
+    161 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:166:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    164 |               />
+    165 |             </Grid>
+  > 166 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    167 |               <TextField
+    168 |                 select
+    169 |                 label="Jenis Kelamin"
+
+ERROR in src/pages/Patients.tsx:178:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    176 |               </TextField>
+    177 |             </Grid>
+  > 178 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    179 |               <TextField
+    180 |                 label="Tanggal Lahir"
+    181 |                 type="date"
+
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 9:19:  'TrendingDownIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 9:19:  'TrendingDownIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/pages/Dashboard.tsx:85:9
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; lg: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; lg: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    83 |       <Grid container spacing={3} sx={{ mb: 4 }}>
+    84 |         {/* Main Chart */}
+  > 85 |         <Grid item xs={12} lg={8}>
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    86 |           <Paper sx={{ p: 3, borderRadius: 4, height: 400 }}>
+    87 |             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+    88 |               <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Trend Analisis</Typography>
+
+ERROR in src/pages/Dashboard.tsx:124:9
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; lg: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; lg: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    122 |
+    123 |         {/* Info Card */}
+  > 124 |         <Grid item xs={12} lg={4}>
+        |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    125 |           <Card sx={{
+    126 |             borderRadius: 4, height: '100%', minHeight: 400,
+    127 |             background: 'linear-gradient(135deg, #135bec 0%, #4a90e2 100%)',
+
+ERROR in src/pages/Patients.tsx:150:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    148 |         <DialogContent>
+    149 |           <Grid container spacing={2} sx={{ mt: 1 }}>
+  > 150 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    151 |               <TextField
+    152 |                 label="Nama Lengkap"
+    153 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:158:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    156 |               />
+    157 |             </Grid>
+  > 158 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    159 |               <TextField
+    160 |                 label="NIK"
+    161 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:166:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    164 |               />
+    165 |             </Grid>
+  > 166 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    167 |               <TextField
+    168 |                 select
+    169 |                 label="Jenis Kelamin"
+
+ERROR in src/pages/Patients.tsx:178:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    176 |               </TextField>
+    177 |             </Grid>
+  > 178 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    179 |               <TextField
+    180 |                 label="Tanggal Lahir"
+    181 |                 type="date"
+
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 9:19:  'TrendingDownIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 9:19:  'TrendingDownIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/pages/Dashboard.tsx:85:9
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; lg: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; lg: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    83 |       <Grid container spacing={3} sx={{ mb: 4 }}>
+    84 |         {/* Main Chart */}
+  > 85 |         <Grid item xs={12} lg={8}>
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    86 |           <Paper sx={{ p: 3, borderRadius: 4, height: 400 }}>
+    87 |             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+    88 |               <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Trend Analisis</Typography>
+
+ERROR in src/pages/Dashboard.tsx:124:9
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; lg: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; lg: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    122 |
+    123 |         {/* Info Card */}
+  > 124 |         <Grid item xs={12} lg={4}>
+        |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    125 |           <Card sx={{
+    126 |             borderRadius: 4, height: '100%', minHeight: 400,
+    127 |             background: 'linear-gradient(135deg, #135bec 0%, #4a90e2 100%)',
+
+ERROR in src/pages/Patients.tsx:154:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    152 |         <DialogContent>
+    153 |           <Grid container spacing={2} sx={{ mt: 1 }}>
+  > 154 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    155 |               <TextField
+    156 |                 label="Nama Lengkap"
+    157 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:162:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    160 |               />
+    161 |             </Grid>
+  > 162 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    163 |               <TextField
+    164 |                 label="NIK"
+    165 |                 fullWidth
+
+ERROR in src/pages/Patients.tsx:170:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; sm: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; sm: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    168 |               />
+    169 |             </Grid>
+  > 170 |             <Grid item xs={12} sm={6}>
+        |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    171 |               <TextField
+    172 |                 select
+    173 |                 label="Jenis Kelamin"
+
+ERROR in src/pages/Patients.tsx:182:13
+TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<...> & Omit<...>): Element | null', gave the following error.
+    Property 'component' is missing in type '{ children: Element; item: true; xs: number; }' but required in type '{ component: ElementType<any, keyof IntrinsicElements>; }'.
+  Overload 2 of 2, '(props: DefaultComponentProps<GridTypeMap<{}, "div">>): Element | null', gave the following error.
+    Type '{ children: Element; item: true; xs: number; }' is not assignable to type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+      Property 'item' does not exist on type 'IntrinsicAttributes & GridBaseProps & { sx?: SxProps<Theme> | undefined; } & SystemProps<Theme> & Omit<...>'.
+    180 |               </TextField>
+    181 |             </Grid>
+  > 182 |             <Grid item xs={12}>
+        |             ^^^^^^^^^^^^^^^^^^^
+    183 |               <TextField
+    184 |                 label="Tanggal Lahir"
+    185 |                 type="date"

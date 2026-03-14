@@ -1,0 +1,15 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/mri/upload        --> github.com/bumame/brain-tumor-detection/internal/handler.(*MRIHandler).UploadMRI-fm (4 handlers)
+[GIN-debug] POST   /api/v1/mri/analyze       --> github.com/bumame/brain-tumor-detection/internal/handler.(*MRIHandler).AnalyzeMRI-fm (4 handlers)
+[GIN-debug] GET    /api/v1/patients/         --> github.com/bumame/brain-tumor-detection/internal/handler.(*PatientHandler).GetPatients-fm (4 handlers)
+[GIN-debug] POST   /api/v1/patients/         --> github.com/bumame/brain-tumor-detection/internal/handler.(*PatientHandler).CreatePatient-fm (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2026/03/14 - 04:08:33 | 503 |   4.42ms |             ::1 | POST     "/api/v1/mri/analyze"
+signal: terminated
