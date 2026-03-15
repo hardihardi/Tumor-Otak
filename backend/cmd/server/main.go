@@ -24,14 +24,17 @@ func main() {
 	db := repository.NewDB()
 	patientRepo := repository.NewPatientRepository(db)
 	mriRepo := repository.NewMRIRepository(db)
+	logRepo := repository.NewLogRepository(db)
 
-	mriHandler := handler.NewMRIHandler(mriRepo)
-	patientHandler := handler.NewPatientHandler(patientRepo)
+	mriHandler := handler.NewMRIHandler(mriRepo, logRepo)
+	patientHandler := handler.NewPatientHandler(patientRepo, logRepo)
 	dashboardHandler := handler.NewDashboardHandler(patientRepo, mriRepo)
+	logHandler := handler.NewLogHandler(logRepo)
 
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/stats", dashboardHandler.GetStats)
+		v1.GET("/logs", logHandler.GetLogs)
 		mri := v1.Group("/mri")
 		{
 			mri.POST("/upload", mriHandler.UploadMRI)

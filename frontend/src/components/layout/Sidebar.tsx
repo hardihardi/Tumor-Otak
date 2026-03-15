@@ -8,16 +8,12 @@ import {
   Dashboard as DashboardIcon,
   People as PeopleIcon,
   Settings as SettingsIcon,
-  BarChart as BarChartIcon,
   Assignment as AssignmentIcon,
   Security as SecurityIcon,
   Public as PublicIcon,
   Widgets as WidgetsIcon,
-  Map as MapIcon,
-  Description as DescriptionIcon,
-  TableChart as TableChartIcon,
-  Face as FaceIcon,
-  Psychology as PsychologyIcon
+  Psychology as PsychologyIcon,
+  VpnKey as VpnKeyIcon
 } from '@mui/icons-material';
 
 const drawerWidth = 240;
@@ -38,27 +34,15 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
         { text: 'MRI Analysis', icon: <PsychologyIcon />, path: '/analyze' },
         { text: 'Data Pasien', icon: <PeopleIcon />, path: '/patients' },
-        { text: 'Design System', icon: <DescriptionIcon />, path: '/design', badge: '10' },
+        { text: 'Activity Logs', icon: <AssignmentIcon />, path: '/logs' },
       ]
     },
     {
-      title: 'Pages',
+      title: 'Management',
       items: [
-        { text: 'Special Pages', icon: <PublicIcon />, path: '/special' },
-        { text: 'Authentication', icon: <SecurityIcon />, path: '/auth' },
-        { text: 'Utilities', icon: <AssignmentIcon />, path: '/utils' },
-        { text: 'Admin', icon: <SettingsIcon />, path: '/admin' },
-      ]
-    },
-    {
-      title: 'Elements',
-      items: [
-        { text: 'Components', icon: <WidgetsIcon />, path: '/components' },
-        { text: 'Widget', icon: <AssignmentIcon />, path: '/widgets' },
-        { text: 'Maps', icon: <MapIcon />, path: '/maps' },
-        { text: 'Form', icon: <DescriptionIcon />, path: '/form' },
-        { text: 'Table', icon: <TableChartIcon />, path: '/table' },
-        { text: 'Icons', icon: <FaceIcon />, path: '/icons' },
+        { text: 'Role Management', icon: <SecurityIcon />, path: '/roles' },
+        { text: 'Permissions', icon: <VpnKeyIcon />, path: '/permissions' },
+        { text: 'User Settings', icon: <SettingsIcon />, path: '/settings' },
       ]
     }
   ];
@@ -70,10 +54,10 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
           width: 32, height: 32, bgcolor: 'primary.main', borderRadius: 1,
           display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'
         }}>
-          <WidgetsIcon sx={{ fontSize: 20 }} />
+          <PsychologyIcon sx={{ fontSize: 20 }} />
         </Box>
         <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
-          Hope UI
+          Bumame ML
         </Typography>
       </Toolbar>
       <Divider />
@@ -111,13 +95,6 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
                         primary={item.text}
                         primaryTypographyProps={{ fontSize: '0.875rem', fontWeight: active ? 600 : 400 }}
                       />
-                      {item.badge && (
-                        <Box sx={{
-                          bgcolor: 'success.main', color: 'white', px: 1, borderRadius: 10, fontSize: '0.65rem'
-                        }}>
-                          {item.badge}
-                        </Box>
-                      )}
                     </ListItemButton>
                   </ListItem>
                 );

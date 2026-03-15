@@ -9,11 +9,12 @@ import (
 )
 
 type PatientHandler struct {
-	repo *repository.PatientRepository
+	repo    *repository.PatientRepository
+	logRepo *repository.LogRepository
 }
 
-func NewPatientHandler(repo *repository.PatientRepository) *PatientHandler {
-	return &PatientHandler{repo: repo}
+func NewPatientHandler(repo *repository.PatientRepository, logRepo *repository.LogRepository) *PatientHandler {
+	return &PatientHandler{repo: repo, logRepo: logRepo}
 }
 
 func (h *PatientHandler) GetPatients(c *gin.Context) {
@@ -37,6 +38,14 @@ func (h *PatientHandler) CreatePatient(c *gin.Context) {
 		log.Printf("Error creating patient: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
+	}
+
+	// Log activity
+	if h.logRepo != nil {
+		h.logRepo.Create(&model.ActivityLog{
+			Action: "Created patient: " + patient.Name,
+			Module: "Patient",
+		})
 	}
 
 	c.JSON(http.StatusCreated, patient)

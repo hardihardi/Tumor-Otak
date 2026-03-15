@@ -1,5 +1,1 @@
-INFO:     Started server process [42279]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:40058 - "GET /health HTTP/1.1" 200 OK
+/home/jules/.pyenv/versions/3.12.13/bin/python3: can't open file '/app/ml-service/main.py': [Errno 2] No such file or directory

@@ -14,11 +14,12 @@ import (
 )
 
 type MRIHandler struct {
-	repo *repository.MRIRepository
+	repo    *repository.MRIRepository
+	logRepo *repository.LogRepository
 }
 
-func NewMRIHandler(repo *repository.MRIRepository) *MRIHandler {
-	return &MRIHandler{repo: repo}
+func NewMRIHandler(repo *repository.MRIRepository, logRepo *repository.LogRepository) *MRIHandler {
+	return &MRIHandler{repo: repo, logRepo: logRepo}
 }
 
 func (h *MRIHandler) UploadMRI(c *gin.Context) {
@@ -69,9 +70,8 @@ func (h *MRIHandler) AnalyzeMRI(c *gin.Context) {
 
 	// Save to database
 	scan := &model.MRIScan{
-		ID:             fmt.Sprintf("SCAN-%d", time.Now().Unix()),
 		PatientID:      patientID,
-		ImageURL:       header.Filename, // Mock URL
+		ImageURL:       header.Filename,
 		AnalysisStatus: "Completed",
 		Prediction:     mlResult.PredictionLabel,
 		Confidence:     mlResult.Confidence,
@@ -81,6 +81,14 @@ func (h *MRIHandler) AnalyzeMRI(c *gin.Context) {
 	if err := h.repo.SaveScan(scan); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save scan results: " + err.Error()})
 		return
+	}
+
+	// Log activity
+	if h.logRepo != nil {
+		h.logRepo.Create(&model.ActivityLog{
+			Action: fmt.Sprintf("Analyzed MRI for patient %s. Result: %s", patientID, mlResult.PredictionLabel),
+			Module: "MRI Analysis",
+		})
 	}
 
 	c.JSON(http.StatusOK, gin.H{

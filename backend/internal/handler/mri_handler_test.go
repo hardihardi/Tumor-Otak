@@ -14,7 +14,8 @@ import (
 func TestUploadMRI(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	r := gin.Default()
-	h := NewMRIHandler()
+	// Mock handler with nil repos for basic endpoint test
+	h := NewMRIHandler(nil, nil)
 	r.POST("/upload", h.UploadMRI)
 
 	reqBody, _ := json.Marshal(model.MRIUploadRequest{

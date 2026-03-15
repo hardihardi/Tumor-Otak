@@ -4,12 +4,27 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
+[GIN-debug] GET    /api/v1/stats             --> github.com/bumame/brain-tumor-detection/internal/handler.(*DashboardHandler).GetStats-fm (4 handlers)
+[GIN-debug] GET    /api/v1/logs              --> github.com/bumame/brain-tumor-detection/internal/handler.(*LogHandler).GetLogs-fm (4 handlers)
 [GIN-debug] POST   /api/v1/mri/upload        --> github.com/bumame/brain-tumor-detection/internal/handler.(*MRIHandler).UploadMRI-fm (4 handlers)
 [GIN-debug] POST   /api/v1/mri/analyze       --> github.com/bumame/brain-tumor-detection/internal/handler.(*MRIHandler).AnalyzeMRI-fm (4 handlers)
+[GIN-debug] GET    /api/v1/mri/recent        --> github.com/bumame/brain-tumor-detection/internal/handler.(*MRIHandler).GetRecentScans-fm (4 handlers)
 [GIN-debug] GET    /api/v1/patients/         --> github.com/bumame/brain-tumor-detection/internal/handler.(*PatientHandler).GetPatients-fm (4 handlers)
 [GIN-debug] POST   /api/v1/patients/         --> github.com/bumame/brain-tumor-detection/internal/handler.(*PatientHandler).CreatePatient-fm (4 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2026/03/14 - 04:08:33 | 503 |   4.42ms |             ::1 | POST     "/api/v1/mri/analyze"
-signal: terminated
+[GIN] 2026/03/15 - 11:46:54 | 200 |    1.33s |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:46:54 | 200 |  48.06ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:46:55 | 200 | 106.32ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:46:55 | 200 |  98.77ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:46:58 | 500 | 100.33ms |             ::1 | GET      "/api/v1/logs"
+[GIN] 2026/03/15 - 11:46:58 | 500 |  95.96ms |             ::1 | GET      "/api/v1/logs"
+[GIN] 2026/03/15 - 11:51:36 | 200 | 174.54ms |             ::1 | GET      "/api/v1/stats"
+[GIN] 2026/03/15 - 11:51:36 | 200 | 181.51ms |             ::1 | GET      "/api/v1/stats"
+[GIN] 2026/03/15 - 11:51:40 | 200 |  37.81ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:51:40 | 200 |  92.07ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:51:42 | 200 |     86ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:51:42 | 200 |  98.06ms |             ::1 | GET      "/api/v1/patients/"
+[GIN] 2026/03/15 - 11:51:44 | 500 |  47.07ms |             ::1 | GET      "/api/v1/logs"
+[GIN] 2026/03/15 - 11:51:44 | 500 |  98.48ms |             ::1 | GET      "/api/v1/logs"
