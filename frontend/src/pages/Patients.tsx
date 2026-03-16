@@ -1,32 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box, Typography, Paper, Button, Table, TableBody, TableCell,
-  TableContainer, TableHead, TableRow, IconButton, Dialog,
-  DialogTitle, DialogContent, TextField, DialogActions,
-  FormControl, InputLabel, Select, MenuItem, Chip, Grid
+  Box, Typography, Button, Table, TableBody, TableCell, TableContainer,
+  TableHead, TableRow, Paper, IconButton, TextField, InputAdornment,
+  Dialog, DialogTitle, DialogContent, DialogActions, Grid, Chip, MenuItem
 } from '@mui/material';
 import {
   Add as AddIcon,
+  Search as SearchIcon,
   Edit as EditIcon,
   Delete as DeleteIcon,
-  Search as SearchIcon
+  Person as PersonIcon
 } from '@mui/icons-material';
 
-interface Patient {
-  id: string;
-  nik: string;
-  name: string;
-  date_of_birth: string;
-  gender: string;
-  created_at: string;
-}
-
-const Patients: React.FC = () => {
-  const [patients, setPatients] = useState<Patient[]>([]);
+const Patients = () => {
+  const [patients, setPatients] = useState<any[]>([]);
+  const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
   const [newPatient, setNewPatient] = useState({
-    name: '',
     nik: '',
+    name: '',
     date_of_birth: '',
     gender: 'Male'
   });
@@ -34,59 +26,81 @@ const Patients: React.FC = () => {
   const fetchPatients = () => {
     fetch('http://localhost:8080/api/v1/patients/')
       .then(res => res.json())
-      .then(data => setPatients(data.patients || []));
+      .then(data => setPatients(data.patients || []))
+      .catch(err => console.error(err));
   };
 
   useEffect(() => {
     fetchPatients();
   }, []);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const handleSubmit = async () => {
+  const handleAddPatient = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v1/patients/', {
+      const res = await fetch('http://localhost:8080/api/v1/patients/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newPatient),
+        body: JSON.stringify(newPatient)
       });
-
-      if (response.ok) {
+      if (res.ok) {
+        setOpen(false);
+        setNewPatient({ nik: '', name: '', date_of_birth: '', gender: 'Male' });
         fetchPatients();
-        handleClose();
-        setNewPatient({ name: '', nik: '', date_of_birth: '', gender: 'Male' });
       }
     } catch (err) {
-      console.error('Error creating patient:', err);
+      console.error(err);
     }
   };
 
+  const filteredPatients = patients.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase()) ||
+    p.nik.includes(search)
+  );
+
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+      <Box sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
+        justifyContent: 'space-between',
+        alignItems: { xs: 'flex-start', sm: 'center' },
+        gap: 2,
+        mb: 4
+      }}>
         <Box>
-          <Typography variant="h4" sx={{ fontWeight: 'bold' }}>Data Pasien</Typography>
-          <Typography variant="body2" color="textSecondary">Kelola rekam medis dan data demografis pasien.</Typography>
+          <Typography variant="h4" fontWeight="bold">Data Pasien</Typography>
+          <Typography variant="body2" color="text.secondary">Kelola rekam medis dan data demografis pasien.</Typography>
         </Box>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={handleOpen} sx={{ px: 3 }}>
+        <Button
+          variant="contained"
+          startIcon={<AddIcon />}
+          onClick={() => setOpen(true)}
+          sx={{ width: { xs: '100%', sm: 'auto' } }}
+        >
           Tambah Pasien
         </Button>
       </Box>
 
-      <Paper sx={{ p: 2, mb: 3, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
-        <SearchIcon color="action" />
+      <Box mb={3}>
         <TextField
-          variant="standard"
-          placeholder="Cari pasien berdasarkan nama atau NIK..."
           fullWidth
-          InputProps={{ disableUnderline: true }}
+          placeholder="Cari pasien berdasarkan nama atau NIK..."
+          variant="outlined"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          sx={{ bgcolor: 'white', borderRadius: 2 }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="action" />
+              </InputAdornment>
+            ),
+          }}
         />
-      </Paper>
+      </Box>
 
-      <TableContainer component={Paper} sx={{ borderRadius: 4, boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
-        <Table>
-          <TableHead sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
+      <TableContainer component={Paper} sx={{ borderRadius: 4, border: '1px solid #e0e0e0', boxShadow: 'none', overflowX: 'auto' }}>
+        <Table sx={{ minWidth: 700 }}>
+          <TableHead sx={{ bgcolor: '#f8f9fa' }}>
             <TableRow>
               <TableCell sx={{ fontWeight: 'bold' }}>Nama Pasien</TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>NIK</TableCell>
@@ -96,29 +110,31 @@ const Patients: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {patients.map((patient) => (
-              <TableRow key={patient.id} hover>
-                <TableCell sx={{ fontWeight: 600 }}>{patient.name}</TableCell>
-                <TableCell>{patient.nik}</TableCell>
+            {filteredPatients.map((p) => (
+              <TableRow key={p.id} hover>
                 <TableCell>
-                  <Chip
-                    label={patient.gender}
-                    size="small"
-                    color={patient.gender === 'Male' ? 'primary' : 'secondary'}
-                    variant="outlined"
-                  />
+                  <Box display="flex" alignItems="center" gap={1.5}>
+                    <Box sx={{ p: 1, bgcolor: '#f0f4ff', borderRadius: 2, color: 'primary.main', display: 'flex' }}>
+                       <PersonIcon fontSize="small" />
+                    </Box>
+                    <Typography variant="body2" fontWeight="bold">{p.name}</Typography>
+                  </Box>
                 </TableCell>
-                <TableCell>{new Date(patient.date_of_birth).toLocaleDateString()}</TableCell>
+                <TableCell>{p.nik}</TableCell>
                 <TableCell>
-                  <IconButton size="small" color="primary"><EditIcon /></IconButton>
-                  <IconButton size="small" color="error"><DeleteIcon /></IconButton>
+                  <Chip label={p.gender} size="small" color={p.gender === 'Male' ? 'primary' : 'secondary'} variant="outlined" />
+                </TableCell>
+                <TableCell>{new Date(p.date_of_birth).toLocaleDateString()}</TableCell>
+                <TableCell>
+                  <IconButton size="small" color="primary"><EditIcon fontSize="small" /></IconButton>
+                  <IconButton size="small" color="error"><DeleteIcon fontSize="small" /></IconButton>
                 </TableCell>
               </TableRow>
             ))}
-            {patients.length === 0 && (
+            {filteredPatients.length === 0 && (
               <TableRow>
-                <TableCell colSpan={5} align="center" sx={{ py: 3, opacity: 0.5 }}>
-                  Belum ada data pasien.
+                <TableCell colSpan={5} align="center" sx={{ py: 4 }}>
+                  <Typography color="text.secondary">Data tidak ditemukan.</Typography>
                 </TableCell>
               </TableRow>
             )}
@@ -126,44 +142,53 @@ const Patients: React.FC = () => {
         </Table>
       </TableContainer>
 
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
-        <DialogTitle sx={{ fontWeight: 'bold' }}>Tambah Pasien Baru</DialogTitle>
-        <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 1 }}>
-          <TextField
-            label="Nama Lengkap"
-            fullWidth
-            value={newPatient.name}
-            onChange={(e) => setNewPatient({ ...newPatient, name: e.target.value })}
-          />
-          <TextField
-            label="NIK"
-            fullWidth
-            value={newPatient.nik}
-            onChange={(e) => setNewPatient({ ...newPatient, nik: e.target.value })}
-          />
-          <TextField
-            label="Tanggal Lahir"
-            type="date"
-            fullWidth
-            InputLabelProps={{ shrink: true }}
-            value={newPatient.date_of_birth}
-            onChange={(e) => setNewPatient({ ...newPatient, date_of_birth: e.target.value })}
-          />
-          <FormControl fullWidth>
-            <InputLabel>Gender</InputLabel>
-            <Select
-              value={newPatient.gender}
-              label="Gender"
-              onChange={(e) => setNewPatient({ ...newPatient, gender: e.target.value })}
-            >
-              <MenuItem value="Male">Laki-laki</MenuItem>
-              <MenuItem value="Female">Perempuan</MenuItem>
-            </Select>
-          </FormControl>
+      <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="sm">
+        <DialogTitle sx={{ fontWeight: 'bold' }}>Registrasi Pasien Baru</DialogTitle>
+        <DialogContent>
+          <Grid container spacing={3} sx={{ mt: 0.5 }}>
+            <Grid size={{ xs: 12 }}>
+              <TextField
+                fullWidth
+                label="NIK (Nomor Induk Kependudukan)"
+                value={newPatient.nik}
+                onChange={(e) => setNewPatient({ ...newPatient, nik: e.target.value })}
+              />
+            </Grid>
+            <Grid size={{ xs: 12 }}>
+              <TextField
+                fullWidth
+                label="Nama Lengkap"
+                value={newPatient.name}
+                onChange={(e) => setNewPatient({ ...newPatient, name: e.target.value })}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <TextField
+                fullWidth
+                type="date"
+                label="Tanggal Lahir"
+                InputLabelProps={{ shrink: true }}
+                value={newPatient.date_of_birth}
+                onChange={(e) => setNewPatient({ ...newPatient, date_of_birth: e.target.value })}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <TextField
+                select
+                fullWidth
+                label="Gender"
+                value={newPatient.gender}
+                onChange={(e) => setNewPatient({ ...newPatient, gender: e.target.value })}
+              >
+                <MenuItem value="Male">Male</MenuItem>
+                <MenuItem value="Female">Female</MenuItem>
+              </TextField>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
-          <Button onClick={handleClose}>Batal</Button>
-          <Button onClick={handleSubmit} variant="contained" sx={{ px: 4 }}>Simpan</Button>
+          <Button onClick={() => setOpen(false)}>Batal</Button>
+          <Button variant="contained" onClick={handleAddPatient}>Simpan Pasien</Button>
         </DialogActions>
       </Dialog>
     </Box>

@@ -5,6 +5,7 @@ import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import MRIAnalysis from './pages/MRIAnalysis';
 import Patients from './pages/Patients';
+import Users from './pages/Users';
 import ActivityLogs from './pages/ActivityLogs';
 import Roles from './pages/Roles';
 import Permissions from './pages/Permissions';
@@ -51,6 +52,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/analyze" element={<MRIAnalysis />} />
             <Route path="/patients" element={<Patients />} />
+            <Route path="/users" element={<Users />} />
             <Route path="/logs" element={<ActivityLogs />} />
             <Route path="/roles" element={<Roles />} />
             <Route path="/permissions" element={<Permissions />} />

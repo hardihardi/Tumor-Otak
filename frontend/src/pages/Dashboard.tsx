@@ -1,211 +1,206 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Grid, Paper, Typography, Box, Card, CardContent,
-  Avatar, LinearProgress, Table, TableBody, TableCell,
-  TableContainer, TableHead, TableRow, Chip, Divider, Button
+  Box, Typography, Grid, Card, CardContent, Stack, LinearProgress,
+  Button, Chip, Divider, Paper
 } from '@mui/material';
 import {
-  Psychology as PsychologyIcon,
   People as PeopleIcon,
-  CheckCircle as CheckCircleIcon,
+  Psychology as PsychologyIcon,
   TrendingUp as TrendingUpIcon,
+  CheckCircle as CheckCircleIcon,
+  FiberManualRecord as FiberManualRecordIcon,
+  Timeline as TimelineIcon,
+  Speed as SpeedIcon,
+  History as HistoryIcon
 } from '@mui/icons-material';
 import {
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-interface Stats {
-  total_patients: number;
-  total_scans: number;
-  tumor_detected: number;
-  recent_scans: any[];
-}
-
 const Dashboard = () => {
-  const [stats, setStats] = useState<Stats>({
-    total_patients: 0,
-    total_scans: 0,
-    tumor_detected: 0,
-    recent_scans: []
+  const [stats, setStats] = useState({
+    totalPatients: 0,
+    totalScans: 0,
+    tumorDetected: 0,
+    accuracy: '94.2%'
   });
-
-  const chartData = [
-    { name: 'Mon', scans: 4, tumors: 1 },
-    { name: 'Tue', scans: 7, tumors: 2 },
-    { name: 'Wed', scans: 5, tumors: 1 },
-    { name: 'Thu', scans: 8, tumors: 3 },
-    { name: 'Fri', scans: 12, tumors: 4 },
-    { name: 'Sat', scans: 6, tumors: 1 },
-    { name: 'Sun', scans: 3, tumors: 0 },
-  ];
+  const [recentScans, setRecentScans] = useState<any[]>([]);
 
   useEffect(() => {
     fetch('http://localhost:8080/api/v1/stats')
       .then(res => res.json())
       .then(data => setStats(data))
-      .catch(err => console.error('Error fetching stats:', err));
+      .catch(err => console.error(err));
+
+    fetch('http://localhost:8080/api/v1/mri/recent')
+      .then(res => res.json())
+      .then(data => setRecentScans(data.scans || []))
+      .catch(err => console.error(err));
   }, []);
 
-  const statCards = [
-    { title: 'Total Pasien', value: stats.total_patients, icon: <PeopleIcon />, color: '#135bec', trend: '+12% from last month' },
-    { title: 'Total Analysis', value: stats.total_scans, icon: <PsychologyIcon />, color: '#00d084', trend: '+5% from yesterday' },
-    { title: 'Tumor Detected', value: stats.tumor_detected, icon: <TrendingUpIcon />, color: '#ff4d4f', trend: 'Clinically Validated' },
-    { title: 'Model Accuracy', value: '94.2%', icon: <CheckCircleIcon />, color: '#7a3e9d', trend: 'ResNet50 Backbone' },
+  const chartData = [
+    { name: 'Mon', count: 4, tumor: 1 },
+    { name: 'Tue', count: 7, tumor: 2 },
+    { name: 'Wed', count: 5, tumor: 2 },
+    { name: 'Thu', count: 9, tumor: 3 },
+    { name: 'Fri', count: 12, tumor: 4 },
+    { name: 'Sat', count: 6, tumor: 1 },
+    { name: 'Sun', count: 3, tumor: 0 },
   ];
 
   return (
     <Box>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-          Clinical Dashboard
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Real-time brain tumor analysis and patient monitoring.
-        </Typography>
+      <Box mb={4}>
+        <Typography variant="h4" fontWeight="bold">Clinical Dashboard</Typography>
+        <Typography variant="body2" color="text.secondary">Real-time brain tumor analysis and patient monitoring.</Typography>
       </Box>
 
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        {statCards.map((card, index) => (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-            <Card sx={{ borderRadius: 4, boxShadow: '0 10px 30px 0 rgba(19, 91, 236, 0.05)', position: 'relative', overflow: 'hidden' }}>
-              <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Avatar sx={{ bgcolor: `${card.color}15`, color: card.color, borderRadius: 2, width: 48, height: 48 }}>
-                    {card.icon}
-                  </Avatar>
+      {/* Stats Overview */}
+      <Grid container spacing={3} mb={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+          <Card sx={{ borderRadius: 4, borderBottom: '4px solid #135bec' }}>
+            <CardContent>
+              <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                <Box p={1} borderRadius={2} bgcolor="#eef4ff">
+                  <PeopleIcon color="primary" />
                 </Box>
-                <Box sx={{ mt: 2 }}>
-                  <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{card.value}</Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>{card.title}</Typography>
+              </Stack>
+              <Typography variant="h4" fontWeight="bold">{stats.totalPatients}</Typography>
+              <Typography variant="body2" color="text.secondary">Total Pasien</Typography>
+              <Typography variant="caption" color="success.main" fontWeight="bold">+12% from last month</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+          <Card sx={{ borderRadius: 4, borderBottom: '4px solid #00c49f' }}>
+            <CardContent>
+              <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                <Box p={1} borderRadius={2} bgcolor="#e6fcf5">
+                  <PsychologyIcon sx={{ color: '#00c49f' }} />
                 </Box>
-                <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
-                  <Typography variant="caption" sx={{ color: card.trend.includes('-') ? 'error.main' : 'success.main', fontWeight: 'bold' }}>
-                    {card.trend}
-                  </Typography>
+              </Stack>
+              <Typography variant="h4" fontWeight="bold">{stats.totalScans}</Typography>
+              <Typography variant="body2" color="text.secondary">Total Analisis</Typography>
+              <Typography variant="caption" color="success.main" fontWeight="bold">+5% from yesterday</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+          <Card sx={{ borderRadius: 4, borderBottom: '4px solid #ff4d4f' }}>
+            <CardContent>
+              <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                <Box p={1} borderRadius={2} bgcolor="#fff1f0">
+                  <TrendingUpIcon sx={{ color: '#ff4d4f' }} />
                 </Box>
-              </CardContent>
-              <Box sx={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 4, bgcolor: card.color }} />
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid size={{ xs: 12 }}>
-          <Paper sx={{ p: 3, borderRadius: 4, boxShadow: '0 10px 30px 0 rgba(0,0,0,0.02)' }}>
-            <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 3 }}>Analysis Trends (7 Days)</Typography>
-            <Box sx={{ height: 300, width: '100%' }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
-                  <defs>
-                    <linearGradient id="colorScans" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#135bec" stopOpacity={0.1}/>
-                      <stop offset="95%" stopColor="#135bec" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#999', fontSize: 12}} dy={10} />
-                  <YAxis axisLine={false} tickLine={false} tick={{fill: '#999', fontSize: 12}} />
-                  <Tooltip />
-                  <Area type="monotone" dataKey="scans" stroke="#135bec" fillOpacity={1} fill="url(#colorScans)" strokeWidth={3} />
-                  <Area type="monotone" dataKey="tumors" stroke="#ff4d4f" fillOpacity={0} strokeWidth={2} strokeDasharray="5 5" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </Box>
-          </Paper>
+              </Stack>
+              <Typography variant="h4" fontWeight="bold">{stats.tumorDetected}</Typography>
+              <Typography variant="body2" color="text.secondary">Tumor Detected</Typography>
+              <Typography variant="caption" color="primary.main" fontWeight="bold">Clinically Validated</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+          <Card sx={{ borderRadius: 4, borderBottom: '4px solid #722ed1' }}>
+            <CardContent>
+              <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                <Box p={1} borderRadius={2} bgcolor="#f9f0ff">
+                  <CheckCircleIcon sx={{ color: '#722ed1' }} />
+                </Box>
+              </Stack>
+              <Typography variant="h4" fontWeight="bold">{stats.accuracy}</Typography>
+              <Typography variant="body2" color="text.secondary">Model Accuracy</Typography>
+              <Typography variant="caption" color="success.main" fontWeight="bold">ResNet50 Backbone</Typography>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
 
       <Grid container spacing={3}>
-        <Grid size={{ xs: 12, md: 8 }}>
-          <Paper sx={{ p: 3, borderRadius: 4, height: '100%' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Recent Analysis</Typography>
-              <Chip label="Live Feed" size="small" color="primary" variant="outlined" />
-            </Box>
-            <TableContainer>
-              <Table size="small">
-                <TableHead>
-                  <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Patient ID</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Prediction</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Confidence</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Time</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {stats.recent_scans && stats.recent_scans.length > 0 ? stats.recent_scans.map((scan) => (
-                    <TableRow key={scan.id}>
-                      <TableCell sx={{ fontSize: '0.75rem' }}>{scan.patient_id.substring(0, 8)}...</TableCell>
-                      <TableCell>
-                        <Chip
-                          label={scan.prediction || "Normal"}
-                          size="small"
-                          color={scan.prediction && scan.prediction !== "No Tumor" ? "warning" : "success"}
-                          sx={{ fontSize: '0.7rem', fontWeight: 'bold' }}
-                        />
-                      </TableCell>
-                      <TableCell>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <LinearProgress
-                            variant="determinate"
-                            value={scan.confidence * 100}
-                            sx={{ width: 50, height: 6, borderRadius: 3, flexShrink: 0 }}
-                          />
-                          <Typography variant="caption">{(scan.confidence * 100).toFixed(1)}%</Typography>
-                        </Box>
-                      </TableCell>
-                      <TableCell>
-                         <Typography variant="caption" color="text.secondary">
-                           {new Date(scan.created_at).toLocaleTimeString()}
-                         </Typography>
-                      </TableCell>
-                    </TableRow>
-                  )) : (
-                    <TableRow>
-                      <TableCell colSpan={4} align="center" sx={{ py: 4, color: 'text.secondary' }}>
-                        No analysis data available.
-                      </TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
+        {/* Analytics Chart */}
+        <Grid size={{ xs: 12, lg: 8 }}>
+          <Card sx={{ borderRadius: 4, height: '100%' }}>
+            <CardContent>
+              <Typography variant="h6" fontWeight="bold" gutterBottom>Analysis Trends (7 Days)</Typography>
+              <Box height={350} mt={2}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={chartData}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                    <YAxis axisLine={false} tickLine={false} />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="count" stroke="#135bec" strokeWidth={3} fill="#135bec" fillOpacity={0.1} />
+                    <Area type="monotone" dataKey="tumor" stroke="#ff4d4f" strokeWidth={2} fill="#ff4d4f" fillOpacity={0.05} strokeDasharray="5 5" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </Box>
+            </CardContent>
+          </Card>
         </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Paper sx={{ p: 3, borderRadius: 4, height: '100%' }}>
-            <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 3 }}>Model Health</Typography>
-            <Box sx={{ mb: 3 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                <Typography variant="body2">Inference Latency</Typography>
-                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>1.2s</Typography>
-              </Box>
-              <LinearProgress variant="determinate" value={15} sx={{ height: 8, borderRadius: 4 }} />
-            </Box>
-            <Box sx={{ mb: 3 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                <Typography variant="body2">Resource Usage</Typography>
-                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>42%</Typography>
-              </Box>
-              <LinearProgress variant="determinate" value={42} color="secondary" sx={{ height: 8, borderRadius: 4 }} />
-            </Box>
-            <Box sx={{ mb: 3 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                <Typography variant="body2">Validation Drifts</Typography>
-                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>None</Typography>
-              </Box>
-              <LinearProgress variant="determinate" value={0} color="success" sx={{ height: 8, borderRadius: 4 }} />
-            </Box>
 
-            <Divider sx={{ my: 3 }} />
+        {/* Model & System Health */}
+        <Grid size={{ xs: 12, lg: 4 }}>
+          <Stack spacing={3}>
+            <Card sx={{ borderRadius: 4 }}>
+              <CardContent>
+                <Typography variant="h6" fontWeight="bold" gutterBottom>Model Health</Typography>
+                <Stack spacing={2} mt={2}>
+                  <Box>
+                    <Box display="flex" justifyContent="space-between" mb={0.5}>
+                      <Typography variant="caption">Inference Latency</Typography>
+                      <Typography variant="caption" fontWeight="bold">1.2s</Typography>
+                    </Box>
+                    <LinearProgress variant="determinate" value={40} sx={{ height: 6, borderRadius: 3 }} />
+                  </Box>
+                  <Box>
+                    <Box display="flex" justifyContent="space-between" mb={0.5}>
+                      <Typography variant="caption">Resource Usage</Typography>
+                      <Typography variant="caption" fontWeight="bold">42%</Typography>
+                    </Box>
+                    <LinearProgress variant="determinate" value={42} color="secondary" sx={{ height: 6, borderRadius: 3 }} />
+                  </Box>
+                  <Box>
+                    <Box display="flex" justifyContent="space-between" mb={0.5}>
+                      <Typography variant="caption">Validation Drifts</Typography>
+                      <Typography variant="caption" fontWeight="bold">None</Typography>
+                    </Box>
+                    <LinearProgress variant="determinate" value={100} color="success" sx={{ height: 6, borderRadius: 3 }} />
+                  </Box>
+                </Stack>
+                <Divider sx={{ my: 2 }} />
+                <Typography variant="caption" fontWeight="bold" gutterBottom display="block">Quick Actions</Typography>
+                <Stack direction="row" spacing={1}>
+                  <Button fullWidth size="small" variant="outlined" startIcon={<PsychologyIcon />} onClick={() => window.location.href='/analyze'}>New Scan</Button>
+                  <Button fullWidth size="small" variant="outlined" startIcon={<PeopleIcon />} onClick={() => window.location.href='/patients'}>Records</Button>
+                </Stack>
+              </CardContent>
+            </Card>
 
-            <Typography variant="subtitle2" sx={{ fontWeight: 'bold', mb: 2 }}>Quick Actions</Typography>
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              <Button variant="outlined" fullWidth size="small" startIcon={<PsychologyIcon />}>New Scan</Button>
-              <Button variant="outlined" fullWidth size="small" startIcon={<PeopleIcon />}>Records</Button>
-            </Box>
-          </Paper>
+            <Card sx={{ borderRadius: 4 }}>
+              <CardContent>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+                  <Typography variant="h6" fontWeight="bold">Recent Analysis</Typography>
+                  <Chip label="Live Feed" size="small" variant="outlined" color="primary" />
+                </Box>
+                <Stack spacing={2}>
+                  {recentScans.slice(0, 3).map((scan, i) => (
+                    <Box key={i}>
+                      <Stack direction="row" justifyContent="space-between" alignItems="center">
+                        <Box>
+                          <Typography variant="caption" color="text.secondary" display="block">Patient ID</Typography>
+                          <Typography variant="body2" fontWeight="bold">{scan.patient_id.substring(0, 8)}...</Typography>
+                        </Box>
+                        <Chip label={scan.prediction || 'Normal'} size="small" color={scan.prediction === 'No Tumor' ? 'success' : 'warning'} />
+                      </Stack>
+                      {i < 2 && <Divider sx={{ mt: 1.5 }} />}
+                    </Box>
+                  ))}
+                  {recentScans.length === 0 && (
+                    <Typography variant="caption" color="text.secondary" align="center" display="block">No recent activity.</Typography>
+                  )}
+                </Stack>
+              </CardContent>
+            </Card>
+          </Stack>
         </Grid>
       </Grid>
     </Box>
