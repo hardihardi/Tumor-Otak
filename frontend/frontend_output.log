@@ -6064,3 +6064,237 @@ src/pages/Permissions.tsx
 
 webpack compiled with 1 warning
 No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/ActivityLogs.tsx
+  Line 6:24:  'AssignmentIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 4:28:   'Chip' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 11:11:  'InfoIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/ActivityLogs.tsx
+  Line 6:24:  'AssignmentIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 4:28:   'Chip' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 11:11:  'InfoIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 4:28:   'Chip' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 11:11:  'InfoIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 4:28:   'Chip' is defined but never used      @typescript-eslint/no-unused-vars
+  Line 11:11:  'InfoIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Permissions.tsx
+  Line 2:22:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Roles.tsx
+  Line 11:3:  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 13:3:  'Avatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Settings.tsx
+  Line 20:20:  'NotificationsIcon' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 21:15:  'SecurityIcon' is defined but never used       @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Roles.tsx
+  Line 11:3:  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 13:3:  'Avatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Settings.tsx
+  Line 20:20:  'NotificationsIcon' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 21:15:  'SecurityIcon' is defined but never used       @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.
+Compiling...
+Compiled with warnings.
+
+[eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Roles.tsx
+  Line 11:3:  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 13:3:  'Avatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Settings.tsx
+  Line 20:20:  'NotificationsIcon' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 21:15:  'SecurityIcon' is defined but never used       @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint]
+src/components/layout/Sidebar.tsx
+  Line 11:15:  'BarChartIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Dashboard.tsx
+  Line 17:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/MRIAnalysis.tsx
+  Line 15:3:  'Paper' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Roles.tsx
+  Line 11:3:  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+  Line 13:3:  'Avatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/Settings.tsx
+  Line 20:20:  'NotificationsIcon' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 21:15:  'SecurityIcon' is defined but never used       @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+No issues found.

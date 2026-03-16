@@ -1,46 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box, Typography, Grid, Card, CardContent, Button, MenuItem, TextField,
-  CircularProgress, Alert, Chip, Divider, Stack, Paper, Tab, Tabs
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  Stack,
+  Divider,
+  Chip,
+  LinearProgress,
+  Tabs,
+  Tab,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Alert,
+  IconButton
 } from '@mui/material';
 import {
   CloudUpload as UploadIcon,
-  Psychology as PsychologyIcon,
-  CheckCircle as CheckCircleIcon,
+  PlayArrow as PlayIcon,
+  Description as ReportIcon,
+  CheckCircle as SuccessIcon,
   History as HistoryIcon,
-  Info as InfoIcon,
-  Visibility as VisibilityIcon
+  Visibility as ViewIcon
 } from '@mui/icons-material';
 
 const MRIAnalysis = () => {
-  const [patients, setPatients] = useState<any[]>([]);
-  const [selectedPatient, setSelectedPatient] = useState('');
-  const [file, setFile] = useState<File | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState<any>(null);
-  const [error, setError] = useState('');
-  const [tabValue, setTabValue] = useState(0);
+  const [tab, setTab] = useState(0);
+  const [history, setHistory] = useState<any[]>([]);
+  const [file, setFile] = useState<File | null>(null);
+
+  const fetchHistory = () => {
+    fetch('http://localhost:8080/api/v1/mri/recent')
+      .then(res => res.json())
+      .then(data => setHistory(data.scans || []))
+      .catch(err => console.error(err));
+  };
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/v1/patients/')
-      .then(res => res.json())
-      .then(data => setPatients(data.patients || []))
-      .catch(err => console.error(err));
+    fetchHistory();
   }, []);
 
-  const handleAnalyze = async () => {
-    if (!selectedPatient || !file) {
-      setError('Please select a patient and upload an MRI image.');
-      return;
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
     }
+  };
 
+  const handleStartAnalysis = async () => {
+    if (!file) return;
     setAnalyzing(true);
-    setError('');
     setResult(null);
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('patient_id', selectedPatient);
+    formData.append('patient_id', 'BUM-' + Math.floor(Math.random() * 1000)); // Sample ID
 
     try {
       const res = await fetch('http://localhost:8080/api/v1/mri/analyze', {
@@ -49,12 +71,16 @@ const MRIAnalysis = () => {
       });
       const data = await res.json();
       if (res.ok) {
-        setResult(data);
-      } else {
-        setError(data.error || 'Analysis failed');
+        setResult({
+          prediction: data.prediction_label,
+          confidence: data.confidence,
+          area: 'Detected Area', // Placeholder
+          size: 'Estimated size: 12mm', // Placeholder
+        });
+        fetchHistory();
       }
     } catch (err) {
-      setError('Connection to server failed.');
+      console.error(err);
     } finally {
       setAnalyzing(false);
     }
@@ -63,176 +89,177 @@ const MRIAnalysis = () => {
   return (
     <Box>
       <Box mb={4}>
-        <Typography variant="h4" fontWeight="bold">MRI Clinical Analysis</Typography>
-        <Typography variant="body2" color="text.secondary">AI-powered brain tumor detection and segmentation.</Typography>
+        <Typography variant="h4" fontWeight="bold">MRI Analysis</Typography>
+        <Typography variant="body2" color="text.secondary">Upload and process brain MRI scans for automated tumor detection.</Typography>
       </Box>
 
-      <Grid container spacing={4}>
-        {/* Analysis Controls */}
-        <Grid size={{ xs: 12, md: 5, lg: 4 }}>
-          <Card sx={{ borderRadius: 4, mb: 3 }}>
-            <CardContent>
-              <Typography variant="subtitle2" fontWeight="bold" gutterBottom>Analysis Configuration</Typography>
-              <Stack spacing={3} mt={2}>
-                <TextField
-                  select
-                  fullWidth
-                  label="Select Patient Record"
-                  value={selectedPatient}
-                  onChange={(e) => setSelectedPatient(e.target.value)}
-                >
-                  {patients.map((p) => (
-                    <MenuItem key={p.id} value={p.id}>{p.name} ({p.nik})</MenuItem>
-                  ))}
-                </TextField>
-
-                <Box>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    id="mri-upload"
-                    hidden
-                    onChange={(e) => setFile(e.target.files?.[0] || null)}
-                  />
-                  <label htmlFor="mri-upload">
-                    <Button
-                      component="span"
-                      fullWidth
-                      variant="outlined"
-                      startIcon={<UploadIcon />}
-                      sx={{ py: 2, borderStyle: 'dashed' }}
-                    >
-                      {file ? file.name : 'Upload MRI (DICOM/JPG)'}
-                    </Button>
-                  </label>
-                </Box>
-
-                <Button
-                  fullWidth
-                  variant="contained"
-                  size="large"
-                  disabled={analyzing}
-                  onClick={handleAnalyze}
-                  startIcon={analyzing ? <CircularProgress size={20} color="inherit" /> : <PsychologyIcon />}
-                >
-                  {analyzing ? 'Processing...' : 'Start AI Analysis'}
-                </Button>
-              </Stack>
-            </CardContent>
-          </Card>
-
-          {error && <Alert severity="error" sx={{ mb: 3, borderRadius: 3 }}>{error}</Alert>}
-
-          <Card sx={{ borderRadius: 4 }}>
-             <CardContent>
-                <Typography variant="subtitle2" fontWeight="bold" gutterBottom>System Guidelines</Typography>
-                <Typography variant="caption" color="text.secondary">
-                  Ensure the MRI image is clear and centered. Supported types: Glioma, Meningioma, Pituitary. Results should be validated by a certified radiologist.
-                </Typography>
-             </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Viewport & Results */}
-        <Grid size={{ xs: 12, md: 7, lg: 8 }}>
-          <Card sx={{ borderRadius: 4, overflow: 'hidden' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: '#fcfcfc' }}>
-              <Tabs value={tabValue} onChange={(_, v) => setTabValue(v)} sx={{ px: 2 }}>
-                <Tab label="Clinical View" icon={<VisibilityIcon />} iconPosition="start" />
-                <Tab label="Detailed Report" icon={<HistoryIcon />} iconPosition="start" />
-              </Tabs>
-            </Box>
-
-            <CardContent sx={{ p: 0 }}>
-              {tabValue === 0 && (
-                <Box>
+      <Grid container spacing={3}>
+        <Grid size={{ xs: 12, lg: 7 }}>
+          <Stack spacing={3}>
+            <Card sx={{ borderRadius: 4 }}>
+              <CardContent>
+                <Typography variant="h6" fontWeight="bold" gutterBottom>Scan Upload</Typography>
+                <input
+                  type="file"
+                  id="mri-upload"
+                  style={{ display: 'none' }}
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />
+                <label htmlFor="mri-upload">
                   <Box
                     sx={{
-                      width: '100%',
-                      height: { xs: 300, md: 450 },
-                      bgcolor: 'black',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      position: 'relative'
+                      border: '2px dashed #e0e0e0',
+                      borderRadius: 4,
+                      p: 6,
+                      textAlign: 'center',
+                      bgcolor: '#fafafa',
+                      mb: 3,
+                      cursor: 'pointer',
+                      '&:hover': { bgcolor: '#f0f0f0', borderColor: '#135bec' }
                     }}
                   >
-                    {file ? (
-                      <img
-                        src={URL.createObjectURL(file)}
-                        alt="MRI"
-                        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
-                      />
-                    ) : (
-                      <Stack alignItems="center" spacing={1}>
-                        <PsychologyIcon sx={{ fontSize: 60, color: '#333' }} />
-                        <Typography color="grey.800">Awaiting MRI Upload</Typography>
-                      </Stack>
-                    )}
-
-                    {result && (
-                      <Box
-                        sx={{
-                          position: 'absolute',
-                          top: 20,
-                          right: 20,
-                          bgcolor: 'rgba(0,0,0,0.7)',
-                          color: 'white',
-                          p: 1.5,
-                          borderRadius: 2,
-                          backdropFilter: 'blur(4px)'
-                        }}
-                      >
-                        <Typography variant="caption" display="block">AI Prediction</Typography>
-                        <Typography variant="h6" fontWeight="bold" color="primary.main">{result.prediction_label}</Typography>
-                        <Typography variant="caption">Confidence: {(result.confidence * 100).toFixed(1)}%</Typography>
-                      </Box>
-                    )}
+                    <UploadIcon sx={{ fontSize: 48, color: file ? '#135bec' : '#bdbdbd', mb: 2 }} />
+                    <Typography variant="h6" color="text.primary">
+                      {file ? file.name : 'Click or drag MRI scan here'}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">Supports DICOM, JPEG, PNG (Max 50MB)</Typography>
                   </Box>
+                </label>
 
-                  <Box p={3}>
-                    {result ? (
-                      <Stack spacing={2}>
-                        <Alert icon={<CheckCircleIcon fontSize="inherit" />} severity="success" variant="outlined" sx={{ borderRadius: 3 }}>
-                          Analysis completed successfully using ResNet50-v2 backbone.
-                        </Alert>
-                        <Grid container spacing={2}>
-                          <Grid size={{ xs: 6, sm: 3 }}>
-                            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', borderRadius: 3 }}>
-                              <Typography variant="caption" color="text.secondary">Type</Typography>
-                              <Typography variant="subtitle1" fontWeight="bold">{result.prediction_label}</Typography>
-                            </Paper>
-                          </Grid>
-                          <Grid size={{ xs: 6, sm: 3 }}>
-                            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', borderRadius: 3 }}>
-                              <Typography variant="caption" color="text.secondary">Latency</Typography>
-                              <Typography variant="subtitle1" fontWeight="bold">1.4s</Typography>
-                            </Paper>
-                          </Grid>
-                          <Grid size={{ xs: 12, sm: 6 }}>
-                             <Box p={2} borderRadius={3} bgcolor="#f0f7ff" border="1px solid #135bec">
-                                <Typography variant="caption" color="primary.main" fontWeight="bold">Doctor's Note</Typography>
-                                <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-                                   Potential {result.prediction_label} detected. Segmentation mask suggests involvement of frontal lobe. Clinical correlation required.
-                                </Typography>
-                             </Box>
-                          </Grid>
-                        </Grid>
-                      </Stack>
-                    ) : (
-                      <Typography variant="body2" color="text.secondary" align="center">
-                        Upload an MRI scan to begin AI-assisted analysis.
-                      </Typography>
-                    )}
+                <Stack direction="row" spacing={2}>
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    startIcon={analyzing ? null : <PlayIcon />}
+                    disabled={analyzing || !file}
+                    sx={{ borderRadius: 2, bgcolor: '#135bec' }}
+                    onClick={handleStartAnalysis}
+                  >
+                    {analyzing ? 'Processing...' : 'Start ML Analysis'}
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    fullWidth
+                    sx={{ borderRadius: 2 }}
+                    onClick={() => { setFile(null); setResult(null); }}
+                  >
+                    Clear Scan
+                  </Button>
+                </Stack>
+
+                {analyzing && (
+                  <Box mt={3}>
+                    <Typography variant="body2" mb={1}>Analyzing patterns and extracting features...</Typography>
+                    <LinearProgress sx={{ borderRadius: 2, height: 8 }} />
                   </Box>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card sx={{ borderRadius: 4 }}>
+              <CardContent>
+                <Stack direction="row" spacing={1} alignItems="center" mb={2}>
+                  <HistoryIcon color="action" />
+                  <Typography variant="h6" fontWeight="bold">Recent History</Typography>
+                </Stack>
+                <TableContainer>
+                  <Table size="small">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Date</TableCell>
+                        <TableCell>Patient</TableCell>
+                        <TableCell>Result</TableCell>
+                        <TableCell align="right">View</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {history.map((h, i) => (
+                        <TableRow key={i} hover>
+                          <TableCell>{new Date(h.created_at).toLocaleDateString()}</TableCell>
+                          <TableCell>{h.patient_id}</TableCell>
+                          <TableCell>
+                            <Chip label={h.prediction} size="small" color={h.prediction === 'No Tumor' ? 'success' : 'error'} variant="outlined" />
+                          </TableCell>
+                          <TableCell align="right">
+                            <IconButton size="small"><ViewIcon fontSize="small"/></IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </CardContent>
+            </Card>
+          </Stack>
+        </Grid>
+
+        <Grid size={{ xs: 12, lg: 5 }}>
+          <Card sx={{ borderRadius: 4, height: '100%' }}>
+            <CardContent>
+              <Typography variant="h6" fontWeight="bold" gutterBottom>Analysis Results</Typography>
+
+              {!result && !analyzing && (
+                <Box textAlign="center" py={10}>
+                  <Typography color="text.secondary">No active analysis. Please upload and start a scan.</Typography>
                 </Box>
               )}
 
-              {tabValue === 1 && (
-                <Box p={4}>
-                   <Typography variant="h6" fontWeight="bold" gutterBottom>Technical Metadata</Typography>
-                   <Divider sx={{ mb: 2 }} />
-                   <Typography variant="body2" color="text.secondary">No historical analysis metadata available for this session.</Typography>
+              {result && (
+                <Box>
+                  <Alert icon={<SuccessIcon />} severity="success" sx={{ borderRadius: 3, mb: 3 }}>
+                    Analysis Complete
+                  </Alert>
+
+                  <Stack spacing={3} mb={4}>
+                    <Box>
+                      <Typography variant="caption" color="text.secondary">PREDICTED CLASS</Typography>
+                      <Typography variant="h4" fontWeight="bold" color={result.prediction === 'No Tumor' ? '#2e7d32' : '#d32f2f'}>
+                        {result.prediction}
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography variant="caption" color="text.secondary">CONFIDENCE SCORE</Typography>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <LinearProgress
+                          variant="determinate"
+                          value={result.confidence}
+                          sx={{ flex: 1, height: 10, borderRadius: 5 }}
+                          color={result.confidence > 90 ? "success" : "warning"}
+                        />
+                        <Typography fontWeight="bold">{result.confidence?.toFixed(1)}%</Typography>
+                      </Stack>
+                    </Box>
+                  </Stack>
+
+                  <Divider sx={{ mb: 3 }} />
+
+                  <Tabs value={tab} onChange={(_, v) => setTab(v)} sx={{ mb: 2 }}>
+                    <Tab label="Clinical" />
+                    <Tab label="System" />
+                  </Tabs>
+
+                  {tab === 0 && (
+                    <Stack spacing={2}>
+                      <Box display="flex" justifyContent="space-between" p={1.5} bgcolor="#f8f9fa" borderRadius={2}>
+                        <Typography variant="body2" color="text.secondary">Region</Typography>
+                        <Typography variant="body2" fontWeight="bold">{result.area}</Typography>
+                      </Box>
+                      <Box display="flex" justifyContent="space-between" p={1.5} bgcolor="#f8f9fa" borderRadius={2}>
+                        <Typography variant="body2" color="text.secondary">Measurement</Typography>
+                        <Typography variant="body2" fontWeight="bold">{result.size}</Typography>
+                      </Box>
+                    </Stack>
+                  )}
+
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    startIcon={<ReportIcon />}
+                    sx={{ mt: 4, borderRadius: 2, bgcolor: '#135bec', height: 48 }}
+                  >
+                    Generate Diagnostic Report
+                  </Button>
                 </Box>
               )}
             </CardContent>

@@ -1,64 +1,75 @@
 import React from 'react';
-import { Typography, Paper, Box, Grid, Card, CardContent, Checkbox, FormControlLabel, Button } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Divider,
+  Button,
+  Stack
+} from '@mui/material';
+import { Save as SaveIcon } from '@mui/icons-material';
 
 const Permissions = () => {
   const permissionGroups = [
     {
-      title: 'MRI Analysis',
-      items: ['Upload MRI', 'Analyze MRI', 'View Heatmap', 'Download DICOM']
+      module: 'Analysis',
+      permissions: ['Upload MRI', 'Analyze MRI', 'View Heatmap', 'Download DICOM']
     },
     {
-      title: 'Patient Management',
-      items: ['View Patients', 'Create Patient', 'Edit Patient', 'Delete Patient']
+      module: 'Patients',
+      permissions: ['View Patients', 'Create Patient', 'Edit Patient', 'Delete Patient']
     },
     {
-      title: 'User & Security',
-      items: ['Manage Users', 'Manage Roles', 'View Audit Logs', 'System Settings']
+      module: 'Administration',
+      permissions: ['Manage Users', 'Manage Roles', 'View Audit Logs', 'System Settings']
     },
     {
-      title: 'Reporting',
-      items: ['Generate Report', 'Export Data', 'View Statistics']
+      module: 'Reporting',
+      permissions: ['Generate Report', 'Export Data', 'View Statistics']
     }
   ];
 
   return (
     <Box>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-          Permission Management
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Configure granular access controls for system modules
-        </Typography>
-      </Box>
+      <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2} mb={4}>
+        <Box>
+          <Typography variant="h4" fontWeight="bold">Permissions Registry</Typography>
+          <Typography variant="body2" color="text.secondary">Global list of all available permissions in the enterprise system.</Typography>
+        </Box>
+        <Button variant="contained" startIcon={<SaveIcon />} sx={{ borderRadius: 2, bgcolor: '#135bec', px: 4, width: { xs: '100%', sm: 'auto' } }}>
+          Save Changes
+        </Button>
+      </Stack>
 
       <Grid container spacing={3}>
         {permissionGroups.map((group) => (
-          <Grid size={{ xs: 12, md: 6 }} key={group.title}>
-            <Card sx={{ borderRadius: 3, height: '100%' }}>
+          <Grid key={group.module} size={{ xs: 12, md: 6 }}>
+            <Card sx={{ borderRadius: 4 }}>
               <CardContent>
-                <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', borderBottom: '2px solid', borderColor: 'primary.main', pb: 1, mb: 2 }}>
-                  {group.title}
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                  {group.items.map((item) => (
-                    <FormControlLabel
-                      key={item}
-                      control={<Checkbox defaultChecked color="primary" />}
-                      label={item}
-                    />
-                  ))}
-                </Box>
+                <Typography variant="h6" fontWeight="bold" gutterBottom>{group.module} Module</Typography>
+                <Divider sx={{ mb: 2 }} />
+                <FormGroup>
+                  <Grid container spacing={1}>
+                    {group.permissions.map((perm) => (
+                      <Grid key={perm} size={{ xs: 12, sm: 6 }}>
+                        <FormControlLabel
+                          control={<Checkbox defaultChecked size="small" />}
+                          label={<Typography variant="body2">{perm}</Typography>}
+                        />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </FormGroup>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
-
-      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-        <Button variant="outlined">Reset to Defaults</Button>
-        <Button variant="contained" sx={{ px: 4 }}>Save Changes</Button>
-      </Box>
     </Box>
   );
 };
